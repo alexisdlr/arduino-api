@@ -5,8 +5,7 @@ export const postArduino = async (req, res) => {
 
     const q = "INSERT INTO desinfectados (fecha, estado) VALUES (?, ?)";
     const value = moment(Date.now()).format("YYYY-MM-DD");
-    const estado = req.body.estado
-    const [rows] = await pool.query(q, [value, estado]);
+    const [rows] = await pool.query(q, [value]);
     res.status(200).json(rows);
   } catch (error) {
     console.log(error)
